@@ -1,30 +1,40 @@
-for _, Value in next, getgc() do
-    if type(Value) == "function" and islclosure(Value) then
-        local Constants = getconstants(Value)
+-- =============================================
+-- BAC BYPASS (singular clean version)
+-- =============================================
+for _, Table in getgc(true) do
+    if typeof(Table) ~= "table" then continue end
+    if getrawmetatable(Table) then continue end
 
-        if type(Constants) == "table" then
-            for _, Constant in next, Constants do
-                if Constant == "X-16" then
-                    local OldHook
-
-                    OldHook = hookfunction(Value, function(...)
-                        local Stack = debug.getstack(1)
-
-                        for Index, Value in next, Stack do
-                            if Value == "X-16" then
-                                debug.setstack(1, Index, nil)
-                            end
-                        end
-
-                        return OldHook(...)
-                    end)
-
-                    break
-                end
-            end
+    local IsCircular = false
+    for _, v in Table do
+        if typeof(v) == "table" and Table == v then
+            IsCircular = true
+            break
         end
     end
+    if not IsCircular then continue end
+
+    local BanIndex
+    for _, v in Table do
+        if typeof(v) ~= "number" then continue end
+        for i = 1, 3 do
+            if v == i then BanIndex = i break end
+        end
+        if BanIndex then break end
+    end
+
+    if BanIndex and Table[BanIndex] == nil then
+        setrawmetatable(Table, { __newindex = function() end })
+    end
 end
+
+-- X-16 detection bypass
+for _, fn in filtergc("function", { Constants = {"X-16"} }) do
+    for i, upval in debug.getupvalues(fn) do
+        pcall(setmetatable, upval, { __newindex = function() end })
+    end
+end
+
 
 task.wait(10)
 

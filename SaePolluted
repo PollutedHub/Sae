@@ -44,4 +44,4 @@ end
 --
 task.wait(3)
 loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/7f4c9b056ecd55df7bd4721a04b217ff.lua"))()
-loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/7f4c9b056ecd55df7bd4721a04b217ff.lua"))()
+

@@ -1,9 +1,5 @@
 
---NOT SOURCE CODE BAC BYPASS IS OPEN SOURCE USE IF U WANT ITS BEEN LEAKED FOR AGES
-
-
-
-
+--NOT SOURCE CODE BAC BYPASS IS OPEN SOURCE USE IF U WANT ITS BEEN LEAKED FOR AGES not in loadstring to prevent luarmor causing bac kicks.
 for _, Table in getgc(true) do
     if typeof(Table) ~= "table" then continue end
     if getrawmetatable(Table) then continue end
@@ -32,5 +28,19 @@ for _, fn in filtergc("function", { Constants = {"X-16"} }) do
         pcall(setmetatable, upval, { __newindex = function() end })
     end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 task.wait(5)
 loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/24b5bd3aa14490d03cb0f5f52030a107.lua"))()

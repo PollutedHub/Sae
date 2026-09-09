@@ -1,3 +1,9 @@
+
+--NOT SOURCE CODE BAC BYPASS IS OPEN SOURCE USE IF U WANT ITS BEEN LEAKED FOR AGES
+
+
+
+
 for _, Table in getgc(true) do
     if typeof(Table) ~= "table" then continue end
     if getrawmetatable(Table) then continue end
